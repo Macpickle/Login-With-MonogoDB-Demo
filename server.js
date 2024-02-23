@@ -9,7 +9,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-// Set up mongoose connection
+// Set up mongoose connection, use your own database URL in .env file
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 
@@ -22,7 +22,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-}));
+})); // make your own secrect key in .env file
 
 // view ports (styling)
 app.use(express.static(path.join(__dirname, 'views')));
@@ -35,4 +35,6 @@ app.use(express.static(path.join(__dirname, 'src')));
 var index = require('./routes/login');
 app.use('/', index);
 
-app.listen(3000);
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+});

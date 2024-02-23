@@ -4,9 +4,16 @@
 </head>
 
 <body>
-
-        <a href = "login"><button>LOGIN</button></a>
-        <a href = "register"><button>REGISTER</button></a>
+        <% if (!user) { %>
+                <% console.log(user) %>
+                <a href = "login"><button>LOGIN</button></a>
+                <a href = "register"><button>REGISTER</button></a>
+        <% } else { %>
+                <% console.log(user) %>
+                <form action="/logout?_method=DELETE" method="POST">
+                        <button type="submit">LOGOUT</button>
+                </form>
+        <% } %>
 
 </body>
 </html>

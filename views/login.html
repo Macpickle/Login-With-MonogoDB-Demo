@@ -16,8 +16,10 @@
     </form>
     <a href="register">Don't have an account? Register here!</a>
 
-    <% if (message.error) { %>
-        <p><%= message.error %></p>
+    <% if (error) { %>
+        <p class="error"><%= error %></p>
+        
     <% } %>
+
 </body>
 </html>
